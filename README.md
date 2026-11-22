@@ -1,125 +1,154 @@
-📱 Storing Telegram Numbers
+# 📱 Storing Telegram Numbers
 
-<div align="center">A Telegram Bot Project for Managing Numbers, Users, Wallets, and Transactions
+<div align="center">
 
-"Python" · "Pyrogram/Kurigram" · "PostgreSQL" · "Redis" · "Flask"
+**A Telegram bot project for managing number listings, users, balances, and transactions.**
 
-</div>---
+`Python` · `Kurigram / Pyrogram` · `PostgreSQL` · `Redis` · `Flask`
 
-📌 About the Project
-
-Storing Telegram Numbers is a Telegram bot project written in Python. It includes a user interface and an administration panel, with features for managing number records, wallets, statistics, transactions, referrals, and rewards.
-
-This document describes the components and functions available in the project files. Documenting a feature does not mean that its use is legal or safe in all circumstances. You must comply with Telegram's Terms of Service, applicable local laws, and obtain explicit consent from account and data owners.
-
-✨ Features
-
-👤 User Interface
-
-- Main menu for accessing bot sections.
-- View wallet and balance information.
-- View user statistics.
-- Transaction history.
-- Search and custom requests.
-- Referral and daily reward system.
-- Support and contact section.
-- Subscription channel display.
-
-💳 Wallet and Transactions
-
-- Recording balance movements and transactions.
-- Statistics related to user activity.
-- Support for deposits and balance management according to the project's logic.
-- Generation of transaction IDs.
-
-📊 Admin Panel
-
-- Display bot statistics and reports.
-- View user information.
-- Manage administrator permissions.
-- Manage bans and unbans.
-- Manage subscription channels.
-- Send broadcast messages.
-- Manage balances and review transactions.
-- Daily and general reports, country statistics, and seller statistics.
-
-🗄️ Data Management
-
-- PostgreSQL database using "asyncpg".
-- Redis caching when configured.
-- Functions for recording events and transactions.
-- Encryption and decryption functions in the database layer.
-
-🌐 Web Interface
-
-The project includes a Flask application with routes for the dashboard, status checks, and certain statistics, such as the number of users, top sellers, and countries.
-
-🧱 Project Structure
-
-Storing-Telegram-numbers/
-│
-├── main.py              # Bot entry point, Flask routes, and background tasks
-├── config.py            # Project configuration
-├── Database.py          # Database operations and encryption
-├── requirements.txt     # Required Python libraries
-├── README.md            # Project documentation
-├── photo.jpg            # Image used within the project
-│
-└── shop/
-    ├── Admin.py         # Administration and administrator functions
-    ├── Botpay.py        # Wallet, purchases, statistics, and history
-    ├── callbacks.py     # Interactive button handlers
-    ├── inform.py        # Country codes and default prices
-    └── play.py          # Pyrogram interaction logic
-
-🛠️ Technologies Used
-
-Technology| Usage
-Python| Main programming language
-Pyrogram / Kurigram| Telegram API interaction
-PostgreSQL| Data storage
-asyncpg| Asynchronous database connection
-Redis| Caching
-Flask| Web interface and statistics endpoints
-Cryptography| Encryption functions
-python-dotenv| Environment configuration management
-TgCrypto| Support for encryption operations used with the Telegram library
-
-⚙️ Configuration
-
-Project settings are read from environment variables. According to "config.py", these include Telegram connection credentials, owner ID, database connection details, encryption key, Redis settings, web interface settings, and subscription channels.
-
-Important Security Notice Before Running or Deploying:
-
-- Never place "BOT_TOKEN", "API_HASH", passwords, or encryption keys inside a public repository.
-- Review "config.py"; the current file contains sensitive default values and a shared password configuration. Remove insecure default values, generate strong independent secrets, and never use a shared password across accounts.
-- Never upload session files, databases, login logs, or verification codes to GitHub.
-- Do not store or transfer login codes or two-step verification passwords except through a trusted and authorized process, with the account owner's explicit consent.
-- Do not use this project to take control of other people's accounts, trade account access, or bypass Telegram security.
-- Before making any web dashboard publicly accessible, review authentication, permissions, and route protection against unauthorized access.
-
-🔐 Privacy and Responsible Use
-
-The project may handle phone numbers, account information, transactions, and sensitive verification information. Therefore, you should:
-
-1. Collect only the minimum necessary data with the owners' consent.
-2. Clearly explain the purpose of data collection and the retention period.
-3. Restrict data access according to clearly defined permissions.
-4. Protect backups, operational logs, and encryption keys.
-5. Provide a mechanism for deleting data when it is no longer needed or when requested by its owner, where applicable.
-6. Review Telegram's Terms of Service and applicable laws before using any account-related functionality.
-
-⚠️ Notes About the Current Version
-
-This documentation is based on the files included in the archive. It does not include a complete operational audit or testing of every route and function. Therefore, it does not guarantee that the project is free of bugs or vulnerabilities. The presence of a function in the code does not prove that it works successfully in the actual runtime environment.
-
-📄 Copyright and Licensing
-
-Please preserve the copyright and licensing notices included in the project files. Consult the project owner before redistribution, modification, or commercial use. This document does not grant permission to use trademarks, content, or data belonging to third parties.
+</div>
 
 ---
 
-<div align="center">Storing Telegram Numbers
+## 📌 About the Project
+
+**Storing Telegram Numbers** is a Telegram bot project built with Python. It includes user-facing bot features, administrative tools, database management, and a small Flask web dashboard.
+
+The codebase includes functionality for managing number listings, user balances, transactions, reservations, reviews, referrals, support tickets, and administrative operations.
+
+> This README describes functionality found in the supplied source files. It does not certify that every feature has been tested or is safe for production use.
+
+## ✨ Features
+
+### 👤 User Features
+- Main menu and interactive bot keyboards.
+- View wallet balance and account statistics.
+- View transaction history.
+- Browse available listings by country.
+- View listing details and submit ratings.
+- Create and manage purchase-related requests.
+- Referral tracking and rewards.
+- Daily bonus-related settings.
+- Support ticket and communication functionality.
+- Subscription-channel checks.
+
+### 💳 Wallet and Transactions
+- User balance tracking.
+- Transaction records with unique transaction identifiers.
+- Deposit records and status tracking.
+- Purchase and reservation-related records.
+- Ratings and reviews associated with transactions/listings.
+- Coupon records and usage tracking.
+
+### 🛠️ Administration
+- Admin and staff permission checks.
+- User information lookup.
+- Ban and unban controls.
+- Balance adjustment tools.
+- Admin management.
+- Subscription-channel management.
+- Broadcast messaging options.
+- Daily and general reports.
+- Top-seller and country statistics.
+- Listing-management and maintenance controls.
+
+### 📊 Web Dashboard and API
+The project includes a Flask application with routes for:
+- Main dashboard.
+- Application health status.
+- Database health status.
+- General statistics.
+- User count.
+- Top sellers.
+- Top countries.
+
+### 🗄️ Database and Background Tasks
+- PostgreSQL database integration through `asyncpg`.
+- Database tables created by the application.
+- Optional Redis cache integration.
+- Audit-log functionality.
+- Request rate-limiting helper.
+- Background cleanup tasks for expired reservations and stale listings.
+- Automatic refund scheduler.
+- Graceful shutdown handling.
+
+## 🧱 Project Structure
+
+```text
+Storing-Telegram-numbers/
+│
+├── main.py              # Application entry point, Flask routes, and background tasks
+├── config.py            # Project configuration
+├── Database.py          # Database access, data models, and encryption helpers
+├── requirements.txt     # Python dependencies
+├── README.md            # Project documentation
+├── photo.jpg            # Project image asset
+│
+└── shop/
+    ├── Admin.py         # Admin commands and management tools
+    ├── Botpay.py        # Wallet, statistics, history, and purchase handlers
+    ├── callbacks.py     # Inline button and callback handlers
+    ├── inform.py        # Country detection and default pricing helpers
+    └── play.py          # Main bot interactions and account-related logic
+```
+
+## 🛠️ Technologies
+
+| Technology | Purpose |
+|---|---|
+| Python | Main programming language |
+| Kurigram / Pyrogram | Telegram client and bot interaction |
+| PostgreSQL | Persistent data storage |
+| asyncpg | Asynchronous PostgreSQL driver |
+| Redis | Optional caching |
+| Flask | Web dashboard and statistics endpoints |
+| Cryptography (Fernet) | Encryption helper functions |
+| python-dotenv | Environment configuration support |
+| TgCrypto | Cryptographic support for Telegram libraries |
+| aiohttp | Asynchronous HTTP client/server utilities |
+
+## ⚙️ Configuration
+
+The application settings are defined in `config.py`. They include Telegram connection settings, owner/admin configuration, database connection details, encryption settings, Redis configuration, and application limits.
+
+Before running or deploying the project:
+
+- Keep bot tokens, API credentials, database passwords, and encryption keys out of source control.
+- Replace insecure defaults and use unique, strong secrets.
+- Store secrets in environment variables or a protected configuration system.
+- Do not publish Telegram session files, authentication codes, database dumps, or private user information.
+- Restrict access to the dashboard and administrative endpoints.
+- Use separate credentials for development and production.
+
+## 🔐 Security and Privacy
+
+This project may process phone numbers, Telegram session-related information, account metadata, and transaction records. Such information must be handled carefully.
+
+- Use the project only with explicit authorization from the account and data owners.
+- Never collect or use another person's login codes, passwords, or session credentials without their informed consent.
+- Do not use the software to gain unauthorized access to accounts or bypass Telegram security.
+- Collect only the information required for a clearly explained purpose.
+- Apply strict access controls and protect database backups and encryption keys.
+- Define a retention policy and delete data when it is no longer needed.
+- Review Telegram's terms and all applicable laws before deployment.
+
+**Important:** The source includes account-session and two-step-verification-related routines. These areas require a thorough security review before any use. Avoid storing shared or hard-coded verification passwords; each account owner must remain in control of their own credentials and security settings.
+
+## ⚠️ Project Status and Limitations
+
+This documentation is based on inspection of the files included in the supplied archive. It is not a complete runtime test, security audit, or guarantee that every route and feature works in a production environment.
+
+Dependencies, Telegram API behavior, database availability, and configuration values can affect runtime behavior. Review and test the project in a controlled environment before deployment.
+
+## 📄 License and Credits
+
+Please retain the copyright and license notices present in the source files. Obtain permission from the relevant rights holders before redistributing, modifying, or using the project commercially.
+
+---
+
+<div align="center">
+
+**Storing Telegram Numbers**
 
 <!-- ═══════════════════════════════════════════════════════════════════════ --><!--                       Copyright | Footer                              --><!-- ═══════════════════════════════════════════════════════════════════════ --><div align="center">
   <img src="https://capsule-render.vercel.app/api?type=rect&color=0:3B82F6,100:0F172A&height=4&width=40%&section=header" />
